@@ -50,7 +50,7 @@ class LidarOdometryNode : public rclcpp::Node
       std::shared_ptr<LidarOdometry> lidar_odometry_ptr;
 
       void parameter_initilization() {
-        this->declare_parameter<double>("max_correspondence_distance", 1.0);
+        this->declare_parameter<double>("max_correspondence_distance", 10.0);
         this->declare_parameter<double>("transformation_epsilon", 0.005);
         this->declare_parameter<double>("maximum_iterations", 30);
         this->declare_parameter<std::string>("scan_topic_name", "scan");
