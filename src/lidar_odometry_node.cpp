@@ -40,7 +40,7 @@ class LidarOdometryNode : public rclcpp::Node
 
       odom_publisher = this->create_publisher<nav_msgs::msg::Odometry>(odom_topic_name, 100);
       scan_subscriber = this->create_subscription<sensor_msgs::msg::LaserScan>(
-        scan_topic_name, 1000, std::bind(&LidarOdometryNode::scan_callback, this, std::placeholders::_1)
+        scan_topic_name, rclcpp::QoS(rclcpp::KeepLast(100)).best_effort(), std::bind(&LidarOdometryNode::scan_callback, this, std::placeholders::_1)
       );
     }
 
